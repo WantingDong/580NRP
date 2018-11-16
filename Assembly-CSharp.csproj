@@ -65,6 +65,7 @@
      <None Include="Assets\Shader\TwoPassWithLit.shader" />
      <None Include="Assets\Shader\firttest.shader" />
      <None Include="Assets\UnityChan\license.txt" />
+     <None Include="Assets\Shader\OutlineShaderV4.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku_ds.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eye_blend.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
