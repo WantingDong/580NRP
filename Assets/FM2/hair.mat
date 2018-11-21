@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: hair
-  m_Shader: {fileID: 4800000, guid: 7cc0f096875b44e44936fce3a03c6f3d, type: 3}
+  m_Shader: {fileID: 4800000, guid: e09d2151aa0ae8043859de3b92ff3d4f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -38,6 +38,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainBump:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: f02f2304024233246b9786a1908ddb75, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -60,10 +64,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
+    - _ColorMerge: 8
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EdgeThred: 0
+    - _Factor: 0.01
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -73,11 +79,15 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutLightPow: 5
+    - _OutLightStrength: 15
+    - _Outline: 0.4
     - _OutlineThickness: 0.05
     - _Parallax: 0.02
-    - _RimPower: 0.1
+    - _RimPower: 9.96
     - _RimSmooth: 0.1
     - _RimThreshold: 1
+    - _Size: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -85,10 +95,11 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - _AtmoColor: {r: 0, g: 0.4, b: 1, a: 1}
     - _BackColor: {r: 0.13950695, g: 0.16477363, b: 0.31132078, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ForwardColor: {r: 0.06858261, g: 0.062032744, b: 0.3207547, a: 1}
     - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 0.6}
+    - _RimColor: {r: 1, g: 0.99149597, b: 0, a: 0.6}

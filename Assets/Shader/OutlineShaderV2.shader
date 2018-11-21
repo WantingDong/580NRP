@@ -1,4 +1,7 @@
-﻿// Upgrade NOTE: replaced 'UnityObjectToWorldNorm' with 'UnityObjectToWorldNormal'
+﻿// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+// Upgrade NOTE: replaced 'UnityObjectToWorldNorm' with 'UnityObjectToWorldNormal'
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 // Upgrade NOTE: replaced 'UnityObjectToWorldNorm' with 'UnityObjectToWorldNormal'
@@ -8,50 +11,56 @@
 
 // Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
-Shader "Custom/OutlinShaderV2"
+Shader "Custom/OutlineBright"
 {
-	Properties{
-		_Scale("RIM_SCALE", range(1, 8)) = 2
-		_MainTex("main tex",2D) = "black"{}
+	Properties
+	{
+		_MainTex("main tex",2D) = "white"{}
+	_RimColor("rim color",Color) = (1,1,1,1)//边缘颜色
+		_RimPower("rim power",range(1,10)) = 2//边缘强度
 	}
-		SubShader{
-		//渲染队列为透明
-		tags{ "Queue" = "Transparent" }
-		pass {
-		//混合方式
-		Blend SrcAlpha oneMinusSrcAlpha
 
-			CGPROGRAM
+		SubShader
+	{
+		Pass
+	{
+		CGPROGRAM
 #pragma vertex vert
 #pragma fragment frag
-#include "unitycg.cginc"
+#include"UnityCG.cginc"
 
-			float _Scale;
-		struct v2f {
-			float4 pos: SV_POSITION;
-			float3 normal: TEXCOORD0;
-			float4 vertex: TEXCOORD1;
-		};
+		struct v2f
+	{
+		float4 vertex:POSITION;
+		float4 uv:TEXCOORD0;
+		float4 NdotV:COLOR;
+	};
 
-		v2f vert(appdata_base v) {
-			v2f vf;
-			vf.pos = UnityObjectToClipPos(v.vertex);
-			vf.normal = v.normal;
-			vf.vertex = v.vertex;
-			return vf;
-		}
+	sampler2D _MainTex;
+	float4 _RimColor;
+	float _RimPower;
 
-		fixed4 frag(v2f IN) :color{
-			float3 N = UnityObjectToWorldNormal(IN.normal);
-			float3 V = WorldSpaceViewDir(IN.vertex);
-			V = normalize(V);
+	v2f vert(appdata_base v)
+	{
+		v2f o;
+		o.vertex = UnityObjectToClipPos(v.vertex);
+		o.uv = v.texcoord;
+		float3 V = WorldSpaceViewDir(v.vertex);
+		V = mul(unity_WorldToObject,V);//视方向从世界到模型坐标系的转换
+		o.NdotV.x = saturate(dot(v.normal,normalize(V)));//必须在同一坐标系才能正确做点乘运算
+		return o;
+	}
 
-			float bright = 1 - saturate(dot(N, V));
-			bright = pow(bright, _Scale);
-			return fixed4(1,1,1,1) * bright;
-		}
-
-			ENDCG
+	half4 frag(v2f IN) :COLOR
+	{
+		half4 c = tex2D(_MainTex,IN.uv);
+		//用视方向和法线方向做点乘，越边缘的地方，法线和视方向越接近90度，点乘越接近0.
+		//用（1- 上面点乘的结果）*颜色，来反映边缘颜色情况
+		c.rgb += pow((1 - IN.NdotV.x) ,_RimPower)* _RimColor.rgb;
+		return c;
+	}
+		ENDCG
 	}
 	}
+		FallBack "Diffuse"
 }

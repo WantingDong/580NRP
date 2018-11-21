@@ -75,6 +75,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineThickness: 0.026
     - _Parallax: 0.02
+    - _RimPower: 3.45
     - _RimSmooth: 0.1
     - _RimThreshold: 1
     - _SmoothnessTextureChannel: 0
