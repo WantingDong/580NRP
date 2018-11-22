@@ -86,7 +86,7 @@ float4 frag( v2f i ) : COLOR
 	float3_t combinedColor = lerp( diffSamplerColor.rgb, falloffSamplerColor.rgb * diffSamplerColor.rgb, falloffSamplerColor.a );
 
 	// Rimlight
-	float_t rimlightDot = saturate( 0.5 * ( dot( i.normal, i.lightDir ) + 1.0 ) );
+	float_t rimlightDot = saturate( 0.5 * ( dot( i.normal, i.lightDir )  ) );
 	falloffU = saturate( rimlightDot * falloffU );
 	//falloffU = saturate( ( rimlightDot * falloffU - 0.5 ) * 32.0 );
 	falloffU = tex2D( _RimLightSampler, float2( falloffU, 0.25f ) ).r;
@@ -99,6 +99,7 @@ float4 frag( v2f i ) : COLOR
 	float_t attenuation = saturate( 2.0 * LIGHT_ATTENUATION( i ) - 1.0 );
 	combinedColor = lerp( shadowColor, combinedColor, attenuation );
 #endif
-
+	
+	//combinedColor = (floor(combinedColor*4)/4)
 	return float4_t( combinedColor, diffSamplerColor.a ) * _Color * _LightColor0;
 }

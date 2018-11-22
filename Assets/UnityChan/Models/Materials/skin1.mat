@@ -31,7 +31,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
-        m_Texture: {fileID: 2800000, guid: de9341a2cc139c147966fc0680e72d4d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 288c7d0c484ea8c4e8f60f3babcd8ee6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RimLightSampler:
@@ -44,4 +44,4 @@ Material:
     - _Tooniness: 20
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0.8, g: 0.8, b: 1, a: 1}
+    - _ShadowColor: {r: 1, g: 0.8241231, b: 0.8, a: 1}
