@@ -53,8 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BloomEffect.cs" />
      <Compile Include="Assets\bloomScript.cs" />
      <Compile Include="Assets\postEffect.cs" />
+     <Compile Include="Assets\PostEffectBase2.cs" />
      <Compile Include="Assets\UnityChan\Scripts\CameraController.cs" />
      <Compile Include="Assets\UnityChan\Scripts\FaceUpdate.cs" />
      <Compile Include="Assets\UnityChan\Scripts\IdleChanger.cs" />
@@ -82,6 +84,7 @@
      <None Include="Assets\Shader\OutlineShaderV5.shader" />
      <None Include="Assets\Shader\OutlineShaderV1.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hada_blend.shader" />
+     <None Include="Assets\Shader\BloomShader.shader" />
      <None Include="Assets\Shader\OutlineShaderV3.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/charlene/Documents/GitHub/580NRP/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
