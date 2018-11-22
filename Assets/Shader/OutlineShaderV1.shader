@@ -11,20 +11,12 @@ Shader "Custom/NewSurfaceShader" {
 	Properties
 	{
 		_MainTex("main tex",2D) = "black"{}
-	_RimColor("rim color",Color) = (1,1,1,1)//边缘颜色
-		_RimPower("rim power",range(1,10)) = 2//边缘强度
-
 		_Factor("factor",Range(0,0.1)) = 0.01//描边粗细因子
 		_OutLineColor("outline color",Color) = (0,0,0,1)//描边颜色
-
-	//	_MainTex("Base (RGB)", 2D) = "white" {}
-	_MainBump("Bump", 2D) = "bump" {}
-	// 该变量主要使用来降低颜色种类的
-	_Tooniness("Tooniness", Range(0.1,20)) = 4
-		_ColorMerge("ColorMerge", Range(0.1,20)) = 8
-		// 使用ramp texture
-		_Ramp("Ramp Texture", 2D) = "white" {}
-	_Outline("Outline", Range(0,1)) = 0.4
+		//_MainTex("Texture", 2D) = "white" {}
+		_BumpMap("Bumpmap", 2D) = "bump" {}
+		_Ramp("Ramp Textrue", 2D) = "white" {}
+		_Tooniness("Tooniness", Range(0.1, 20)) = 20
 	}
 
 		SubShader
@@ -68,26 +60,32 @@ Shader "Custom/NewSurfaceShader" {
 		ENDCG
 	}
 
-		Pass//描边1 剔除后面
-	{
-		Cull Back //剔除后面
+			Pass{
 		Tags{ "LightMode" = "ForwardBase" }
 		//Blend SrcAlpha OneMinusSrcAlpha // 传统透明度
 
-		
+		Cull Off
 		Lighting On
+
 		CGPROGRAM
+
 #pragma vertex vert
 #pragma fragment frag
+
+#pragma multi_compile_fwdbase
+
 #include "UnityCG.cginc"
 
-		struct v2f
+
+	sampler2D _MainTex;
+	float _EdgeThred;
+
+
+	struct v2f
 	{
 		float4 vertex :POSITION;
 		float4 uv:TEXCOORD0;
 	};
-
-	sampler2D _MainTex;
 
 	v2f vert(appdata_full v)
 	{
@@ -97,16 +95,56 @@ Shader "Custom/NewSurfaceShader" {
 		return o;
 	}
 
-	half4 frag(v2f IN) :COLOR
+	float4 frag(v2f i) : COLOR
 	{
-		//return half4(1,1,1,1);
-		half4 c = tex2D(_MainTex,IN.uv);
+		half4 c = tex2D(_MainTex,i.uv);
 		return c;
-	}
-		ENDCG
+
 	}
 
-		
+		ENDCG
+	}
+		Tags{ "RenderType" = "Transparent" }
+		CGPROGRAM
+#pragma surface surf Toon//Lambert
+
+		struct Input {
+		float2 uv_MainTex;
+		float2 uv_BumpMap;
+	};
+
+	sampler2D _MainTex;
+	sampler2D _BumpMap;
+	sampler2D _Ramp;
+	float _Tooniness;
+
+	void surf(Input IN, inout SurfaceOutput o) {
+		half4 c = tex2D(_MainTex, IN.uv_MainTex);
+		// o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb;
+		o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
+		o.Albedo.rgb = (floor(c.rgb * _Tooniness) / _Tooniness);
+
+		o.Alpha = c.a;
+
+	}
+
+	float4 LightingToon(SurfaceOutput s, fixed3 lightDir, half3 viewDir, fixed atten) {
+		float difLight = max(0, dot(s.Normal, lightDir));
+		float dif_hLambert = difLight * 0.5 + 0.5;
+
+		float rimLight = max(0, dot(s.Normal, viewDir));
+		float rim_hLambert = rimLight * 0.5 + 0.5;
+
+		float3 ramp = tex2Dlod(_Ramp, float4(dif_hLambert, dif_hLambert, 0.5,0.5)).rgb;
+		//float3 ramp = tex2D(_Ramp, float2(dif_hLambert, 0.5)).rgb;
+		float4 c;
+		c.rgb = s.Albedo * _LightColor0.rgb * ramp*0.6;
+		c.a = s.Alpha;
+		return c;
+	}
+
+	ENDCG
+
 	}
 
 

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: hair
-  m_Shader: {fileID: 4800000, guid: e09d2151aa0ae8043859de3b92ff3d4f, type: 3}
+  m_Shader: {fileID: 4800000, guid: 1949d8dbb999c174ab6db2f9a3266c54, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
@@ -18,6 +18,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _AnisoTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BlurTex:
         m_Texture: {fileID: 2800000, guid: 89ede59217e3847c39c444f223f4084e, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -86,11 +90,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: 0fea5a54967707f44832eb8cf7ee3f02, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SceneTex:
+        m_Texture: {fileID: 2800000, guid: cbb65ec17f92eb44fb0dde6381b6a415, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularReflectionSampler:
         m_Texture: {fileID: 2800000, guid: c4271b2b1e8bfa949aa9230abaa7709e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecularTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AnisoOffset: -0.2
     - _BumpScale: 1
     - _ColorMerge: 8
     - _Cutoff: 0.5
@@ -104,43 +117,47 @@ Material:
     - _Factor: 0.01
     - _FalloffPower: 0.5
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _HDR: 0.1
     - _IsCustomizeBackColor: 0
     - _IsCustomizeFrontColor: 0
-    - _Metallic: 0
+    - _Iterations: 1
+    - _Metallic: 0.587
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OutLightPow: 5
     - _OutLightStrength: 15
-    - _Outline: 0
-    - _OutlineThickness: 0.023
+    - _Outline: 0.334
+    - _OutlineFactor: 0
+    - _OutlineThickness: 0.046
     - _Parallax: 0.02
     - _RimPower: 10
     - _RimSmooth: 0.1
     - _RimThreshold: 0.5
     - _RimWidth: 0.9
     - _Scale: 8
-    - _Size: 0
+    - _Size: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SpecularPower: 20
     - _Speed: -0.5
     - _SrcBlend: 1
     - _Thickness: 0.5
-    - _Tooniness: 7.8
+    - _Tooniness: 14.6
     - _UVSec: 0
+    - _Width: 20
     - _ZWrite: 1
     m_Colors:
     - _AtmoColor: {r: 0, g: 0.4, b: 1, a: 1}
     - _BackColor: {r: 0, g: 0, b: 0, a: 1}
     - _BackgroundColor: {r: 1, g: 0.882353, b: 0.49803925, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Diffuse: {r: 0.121568635, g: 0.14509805, b: 0.16470589, a: 1}
+    - _Color: {r: 0.037714228, g: 0.036845826, b: 0.03773582, a: 1}
+    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _EdgeColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ForwardColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutLineColor: {r: 0.050980397, g: 0.050980397, b: 0.050980397, a: 1}
-    - _RimColor: {r: 0.27058825, g: 0.26666668, b: 0.27058825, a: 0.6}
+    - _OutlineCol: {r: 0.4901961, g: 0.4901961, b: 0.4901961, a: 1}
+    - _RimColor: {r: 0.03137255, g: 0.054901965, b: 0.08235294, a: 0.6}
     - _ShadowColor: {r: 0.8, g: 0.8, b: 1, a: 1}

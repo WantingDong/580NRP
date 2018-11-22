@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: hair
-  m_Shader: {fileID: 4800000, guid: e09d2151aa0ae8043859de3b92ff3d4f, type: 3}
+  m_Shader: {fileID: 4800000, guid: 1949d8dbb999c174ab6db2f9a3266c54, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -84,7 +84,7 @@ Material:
     - _Outline: 0.4
     - _OutlineThickness: 0.05
     - _Parallax: 0.02
-    - _RimPower: 9.96
+    - _RimPower: 3.16
     - _RimSmooth: 0.1
     - _RimThreshold: 1
     - _Size: 0.1
@@ -101,5 +101,5 @@ Material:
     - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _ForwardColor: {r: 0.06858261, g: 0.062032744, b: 0.3207547, a: 1}
-    - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutLineColor: {r: 1, g: 0.9921569, b: 0, a: 1}
     - _RimColor: {r: 1, g: 0.99149597, b: 0, a: 0.6}

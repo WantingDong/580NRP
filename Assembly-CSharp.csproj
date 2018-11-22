@@ -65,6 +65,7 @@
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_fuku.shader" />
      <None Include="Assets\Shader\OutlineShaderV2.shader" />
      <None Include="Assets\Shader\TwoPassWithLit.shader" />
+     <None Include="Assets\Shader\transparentShader.shader" />
      <None Include="Assets\Shader\firttest.shader" />
      <None Include="Assets\UnityChan\license.txt" />
      <None Include="Assets\Shader\OutlineShaderV4.shader" />
@@ -73,6 +74,7 @@
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair_ds.shader" />
      <None Include="Assets\Shader\ToonShadow.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_akarami_blend.shader" />
+     <None Include="Assets\Shader\oneMoreTest.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_hair.shader" />
      <None Include="Assets\UnityChan\Stage\Shader\AlphaMask.shader" />
      <None Include="Assets\UnityChan\Models\UnityChanShader\Shader\Unitychan_chara_eyelash_blend.shader" />
